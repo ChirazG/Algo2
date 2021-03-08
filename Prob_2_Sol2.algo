@@ -36,7 +36,7 @@ BEGIN
         END_FOR     
         htab.insert(Set1[i],count);     //htab
         IF (htab.get(Set1[i])=2) THEN
-            sum:= sum + Set1[i];
+            sum:= sum + Set1[i]*2;
         END_IF 
     END_FOR
 

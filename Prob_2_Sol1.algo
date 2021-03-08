@@ -30,7 +30,7 @@ BEGIN
     FOR i FROM 0 TO (n1-1) STEP 1  DO
         FOR j FROM 0 TO (n2-1) STEP 1  DO
              IF (Set1[i]=Set2[j]) THEN
-                sum := sum + Set1[i];                 
+                sum := sum + Set1[i]*2;                 
              END_IF
         END_FOR 
     END_FOR
