@@ -1,0 +1,44 @@
+ALGORITHM sum-distinct
+VAR
+   // declaring hash table
+   htab : HASH_TABLE<INTEGER,INTEGER>;
+   sum: INTEGER:=0;
+   n1, n2, i, j : INTEGER;
+   Set1: ARRAY_OF INTEGER[n1];
+   Set2: ARRAY_OF INTEGER[n2];
+BEGIN
+    //set a condition on the input of the length must be positif and <> from 0 (user)
+    REPEAT
+        write ("give n1 the length of Set1");
+        read(n1);
+        write ("give n2 the length of Set2");
+        read(n2);
+    UNTIL (n1>0 AND n2>0);
+
+    //set a condition on the input of the tables all numbers must be positif (user)
+    REPEAT
+        write ("give Set1[i]");
+        read(Set1[i]);
+        i:= i + 1;
+    UNTIL (Set1[i]>0 OR i>(n1-1));
+    REPEAT
+        write ("give Set2[i]");
+        read(Set2[i]);
+        i:= i + 1;
+    UNTIL (Set2[i]>0 OR i>(n2-1));
+
+    FOR i FROM 0 TO (n1-1) STEP 1  DO
+        count:=1;
+        FOR j FROM 0 TO (n2-1) STEP 1  DO
+             IF (Set1[i]=Set2[j]) THEN
+             count:=count+1;
+             END_IF
+        END_FOR     
+        htab.insert(Set1[i],count);     //htab
+        IF (htab.get(Set1[i])=2) THEN
+            sum:= sum + Set1[i];
+        END_IF 
+    END_FOR
+
+    write(sum);
+END

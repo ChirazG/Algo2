@@ -1,0 +1,57 @@
+ALGORITHM sum-distinct
+VAR
+    test: BOOLEAN:=FALSE;
+    sum: INTEGER:=0;
+    n1, n2, i, j : INTEGER;
+    Set1: ARRAY_OF INTEGER[n1];
+    Set2: ARRAY_OF INTEGER[n2];
+BEGIN
+    //set a condition on the input of the length must be positif and <> from 0 (user)
+    REPEAT
+        write ("give n1 the length of Set1");
+        read(n1);
+        write ("give n2 the length of Set2");
+        read(n2);
+    UNTIL (n1>0 AND n2>0);
+
+    //set a condition on the input of the tables all numbers must be positif (user)
+    REPEAT
+        write ("give Set1[i]");
+        read(Set1[i]);
+        i:= i + 1;
+    UNTIL (Set1[i]>0 OR i>(n1-1));
+    REPEAT
+        write ("give Set2[i]");
+        read(Set2[i]);
+        i:= i + 1;
+    UNTIL (Set2[i]>0 OR i>(n2-1));
+
+    //sum of the distinct numbers of the first table (Set1)
+    FOR i FROM 0 TO (n1-1) STEP 1  DO
+        FOR j FROM 0 TO (n2-1) STEP 1  DO
+             IF (Set1[i]=Set2[j]) THEN
+                test:=TRUE;               
+             END_IF
+        END_FOR
+       IF (test=FALSE) THEN
+            sum := sum + Set1[i];
+         ELSE 
+            test:=FALSE;
+        END_IF  
+    END_FOR
+    //sum of the distinct numbers of the second table (Set2)
+    FOR i FROM 0 TO n2-1 STEP 1  DO
+        FOR j FROM 0 TO n1-1 STEP 1  DO
+             IF (Set2[i]=Set1[j]) THEN
+               test:=TRUE;         
+             END_IF
+        END_FOR
+       IF (test=FALSE) THEN
+            sum := sum + Set2[i];
+         ELSE 
+            test:=FALSE;
+        END_IF  
+    END_FOR
+    //output
+    write(sum);
+END
